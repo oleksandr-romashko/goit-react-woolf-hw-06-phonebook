@@ -3,7 +3,7 @@ import styled from 'styled-components';
 /**
  * Styled wrapper to align elements
  */
-export const Wrapper = styled('div')({
+export const Wrapper = styled('main')({
   marginTop: '24px',
   paddingLeft: '8px',
   paddingRight: '8px',

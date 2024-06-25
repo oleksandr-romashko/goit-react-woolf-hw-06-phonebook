@@ -4,7 +4,6 @@ import styled from 'styled-components';
  * Styled page container to contain main page elements.
  */
 const Page = styled('div')({
-  height: '100vh',
   width: '100%',
   display: 'flex',
   flexDirection: 'column',

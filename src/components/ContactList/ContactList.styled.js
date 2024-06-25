@@ -14,6 +14,7 @@ export const List = styled('ul')({
  */
 export const Item = styled('li')({
   width: '100%',
+  alignItems: 'baseline',
   '&:not(:first-child) ': {
     marginTop: '32px',
   },
@@ -22,6 +23,24 @@ export const Item = styled('li')({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    columnGap: '24px',
+    columnGap: '16px',
+    '@media screen and (min-width: 576px)': {
+      columnGap: '24px',
+    },
+  },
+  '& > div > p': {
+    display: 'flex',
+    rowGap: '8px',
+    flexWrap: 'wrap',
+    fontSize: '22px',
+    '@media screen and (min-width: 420px)': {
+      fontSize: '28px',
+    },
+    '@media screen and (min-width: 576px)': {
+      fontSize: '32px',
+    },
+    '& > span:nth-child(2)': {
+      whiteSpace: 'nowrap',
+    }
   },
 });
