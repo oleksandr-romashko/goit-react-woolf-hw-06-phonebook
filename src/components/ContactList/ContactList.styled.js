@@ -39,8 +39,11 @@ export const Item = styled('li')({
     '@media screen and (min-width: 576px)': {
       fontSize: '32px',
     },
-    '& > span:nth-child(2)': {
+    '& > a': {
       whiteSpace: 'nowrap',
+      '&:hover, &:focus': {
+        textDecoration: 'underline',
+      }
     }
   },
 });

@@ -30,7 +30,7 @@ const ContactList = ({ contacts, onContactDelete }) => {
               <div>
                 <p>
                   <span>{el.name}:&nbsp;</span>
-                  <span>{el.number}</span>
+                  <a href={`tel:${el.number}`}>{el.number}</a>
                 </p>
                 <Button onClick={handleDelete}>Delete</Button>
               </div>
