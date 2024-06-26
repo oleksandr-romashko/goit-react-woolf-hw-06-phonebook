@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
 
 import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
@@ -39,7 +38,7 @@ const Phonebook = () => {
       return false;
     }
 
-    const id = nanoid();
+    const id = Date.now();
     const contactNew = { id, name, number };
     setContacts(prev => [contactNew, ...prev]);
     return true;
