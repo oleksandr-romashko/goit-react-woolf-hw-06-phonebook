@@ -4,9 +4,10 @@ import styled from 'styled-components';
  * Styled text input.
  */
 const Input = styled('input')({
+  boxSizing: 'border-box',
   display: 'flex',
   width: '100%',
-  maxWidth: '260px',
+  maxWidth: '272px',
   padding: '6px 5px',
   alignItems: 'center',
 
