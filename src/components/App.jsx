@@ -1,17 +1,21 @@
-import Page from "components/Page/Page.styled";
-import Header from "components/Header/Header.styled";
-import HeaderIcons from "./Icons/HeaderIcons.styled";
-import { LocalStorageIcon } from "./Icons/LocalStorageIcon";
-import Phonebook from "components/Phonebook/Phonebook";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import Page from 'components/Page/Page.styled';
+import Header from 'components/Header/Header.styled';
+import HeaderIcons from './Icons/HeaderIcons.styled';
+import LocalStorageIcon from './Icons/LocalStorageIcon';
+import Phonebook from 'components/Phonebook/Phonebook';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
-export const App = () => {
+/**
+ * Contact Book application component.
+ * @returns {JSX.Element} Rendered application component.
+ */
+const App = () => {
   return (
     <Page>
       <Header>
         <p>Contact Book</p>
         <HeaderIcons>
-          <LocalStorageIcon fill="white" width="72px" height="72px" />
+          <LocalStorageIcon />
         </HeaderIcons>
       </Header>
       <ErrorBoundary>
@@ -20,3 +24,5 @@ export const App = () => {
     </Page>
   );
 };
+
+export default App;

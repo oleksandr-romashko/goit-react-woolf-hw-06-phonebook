@@ -5,7 +5,7 @@ const LOCAL_STORAGE_CONTACTS_KEY = "phonebook.contacts";
 
 /**
  * Gets contacts from Local Storage.
- * @returns {object[]} Array of contacts or empty array if no data were found under the local storage key. 
+ * @returns {object[]} Array of contacts or empty array if no data found. 
 */
 const getContactsFromStorage = () => {
   const localStorageData = localStorage.getItem(LOCAL_STORAGE_CONTACTS_KEY);
@@ -15,7 +15,9 @@ const getContactsFromStorage = () => {
       data = JSON.parse(localStorageData);
       return data;
     } catch (error) {
-      throw new Error(`While getting contacts from local storage: "${localStorageData}"`);
+      throw new Error(
+        'While getting contacts from local storage: ' + localStorageData
+      );
     }
   }
   return [];
@@ -24,7 +26,9 @@ const getContactsFromStorage = () => {
 /**
  * Sets contacts into Local Storage.
  */
-const writeContactsToStorage = contacts => localStorage.setItem(LOCAL_STORAGE_CONTACTS_KEY, JSON.stringify(contacts));
+const writeContactsToStorage = contacts => (
+  localStorage.setItem(LOCAL_STORAGE_CONTACTS_KEY, JSON.stringify(contacts))
+);
 
 const storageApi = { getContactsFromStorage, writeContactsToStorage };
 

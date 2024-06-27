@@ -1,58 +1,85 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from '../../store/contacts/selectors';
+import { getFilter } from 'store/filter/selectors';
+
+import storageApi from 'storage/api';
+import textToNormalizedWordsArray from 'components/helpers/textToNormalizedWordsArray';
 
 import Button from 'components/Button/Button.styled';
-
 import { List, Item } from './ContactList.styled';
+import { deleteContactByIdAction } from 'store/contacts/actions';
 
 /**
  * Component to contain the list of contact items.
  * Displays default message when no contacts provided.
- * @param {object[]} [props.contacts] Array of contacts.
- * @param {callback} [props.onContactDelete] Callback that handles deletion of the contact.
  * @returns {React.Component} List of contacts or default message.
  */
-const ContactList = ({ contacts, onContactDelete }) => {
+const ContactList = () => {
+  const filter = useSelector(getFilter);
+  const contacts = useSelector(getContacts);
+
+  if (storageApi.getContactsFromStorage().length !== contacts.length) {
+    storageApi.writeContactsToStorage(contacts);
+  }
+
+  /**
+   * Filters contacts based on filter value.
+   * @returns {object[]} Array of filtered contacts.
+   */
+  const filterContacts = () => {
+    if (!contacts.length) {
+      return [];
+    }
+    if (!filter) {
+      return contacts;
+    }
+    const normalizedFilterWordsArr = textToNormalizedWordsArray(filter);
+    return contacts.filter(el => {
+      const normalizedContact = textToNormalizedWordsArray(`${el.name}${el.number}`).join("");
+      return normalizedFilterWordsArr.some(filterEl => (
+          !filterEl.isEmpty && normalizedContact.includes(filterEl)
+        )
+      );
+    });
+  }
+
+  const dispatch = useDispatch();
+
   /**
    * Handles deletion of the contact.
    */
-  const handleDelete = event => {
-    const id = event.target.closest('li').dataset.id;
-    onContactDelete(id);
+  const handleDeleteContact = event => {
+    const id = Number(event.target.closest('li').dataset.id);
+    dispatch(deleteContactByIdAction(id));
   };
 
-  return (
-    <>
-      {contacts && contacts.length > 0 ? (
-        <List aria-label="Contacts list">
-          {contacts.map(el => (
-            <Item key={el.id} aria-label="Contact" data-id={el.id}>
-              <div>
-                <p>
-                  <span>{el.name}:&nbsp;</span>
-                  <a href={`tel:${el.number}`}>{el.number}</a>
-                </p>
-                <Button onClick={handleDelete}>Delete</Button>
-              </div>
-            </Item>
-          ))}
-        </List>
-      ) : (
-        'There are no contacts'
-      )}
-    </>
-  );
-};
+  // no contacts
+  if (!contacts.length) {
+    return 'You have no contacts at the moment.';
+  }
 
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onContactDelete: PropTypes.func.isRequired,
+  const filteredContacts = filterContacts(contacts);
+
+  // no results after contacts filtration
+  if (!filteredContacts.length) {
+    return "It looks like we couldn't find any matches for your search.";
+  }
+
+  return (
+    <List aria-label="Contacts list">
+      {filteredContacts.map(el => (
+        <Item key={el.id} aria-label="Contact" data-id={el.id}>
+          <div>
+            <p>
+              <span>{el.name}:&nbsp;</span>
+              <a href={`tel:${el.number}`}>{el.number}</a>
+            </p>
+            <Button onClick={handleDeleteContact}>Delete</Button>
+          </div>
+        </Item>
+      ))}
+    </List>
+  );
 };
 
 export default ContactList;

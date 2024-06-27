@@ -12,10 +12,10 @@ import { BasicSvg } from './BasicSvg';
  *
  * @returns {React.Component} Icon component.
  */
-export const LocalStorageIcon = ({
-  width,
-  height,
-  fill,
+const LocalStorageIcon = ({
+  width = '72px',
+  height = '72px',
+  fill='white',
   stroke,
   strokeWidth,
 }) => {
@@ -38,6 +38,8 @@ export const LocalStorageIcon = ({
     </BasicSvg>
   );
 };
+
+export default LocalStorageIcon;
 
 LocalStorageIcon.propTypes = {
   width: PropTypes.string,
