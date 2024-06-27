@@ -1,6 +1,11 @@
 import { Cause, FallbackWrapper, Tips } from './FallBackUI.styled';
 import { FallbackIcon } from 'components/Icons';
 
+/**
+ * Fallback message in ase of app error.
+ * @param {Error} props.error Thrown error. 
+ * @returns {JSX.Element} Rendered fallback component.
+ */
 const FallBackUI = ({ error }) => (
   <FallbackWrapper>
     <FallbackIcon fill="black" width="200px" height="200px" />

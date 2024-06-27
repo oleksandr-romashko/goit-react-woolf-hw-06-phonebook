@@ -19,7 +19,7 @@ const PHONE_NUMBER_PATTERN_REGEX =
  * Form to handle contact form elements.
  * Submits data for adding a new contact.
  * Clears form elements on successful submit.
- * @returns {React.Component} Form component.
+ * @returns {JSX.Element} Rendered contact form component.
  */
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const ContactForm = () => {
 
     // Clear filter to see a newly added contact (or in case of contacts update)
     dispatch(setFilterAction(''));
-    
+
     event.target.reset();
   };
 

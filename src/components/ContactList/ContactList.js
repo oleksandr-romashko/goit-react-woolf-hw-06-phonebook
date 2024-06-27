@@ -12,7 +12,7 @@ import { deleteContactByIdAction } from 'store/contacts/actions';
 /**
  * Component to contain the list of contact items.
  * Displays default message when no contacts provided.
- * @returns {React.Component} List of contacts or default message.
+ * @returns {JSX.Element} Rendered list of contacts or default message.
  */
 const ContactList = () => {
   const filter = useSelector(getFilter);
@@ -66,9 +66,9 @@ const ContactList = () => {
   }
 
   return (
-    <List aria-label="Contacts list">
+    <List aria-label='Contacts list'>
       {filteredContacts.map(el => (
-        <Item key={el.id} aria-label="Contact" data-id={el.id}>
+        <Item key={el.id} aria-label='Contact' data-id={el.id}>
           <div>
             <p>
               <span>{el.name}:&nbsp;</span>

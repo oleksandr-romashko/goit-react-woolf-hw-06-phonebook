@@ -10,7 +10,7 @@ import { BasicSvg } from './BasicSvg';
  * @param {string} props.strokeWidth Stroke width.
  * @param {string} props.viewBox Viewbox values.
  *
- * @returns {React.Component} Icon component.
+ * @returns {JSX.Element} Rendered icon component.
  */
 const LocalStorageIcon = ({
   width = '72px',

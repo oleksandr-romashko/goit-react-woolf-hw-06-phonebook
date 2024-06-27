@@ -10,7 +10,7 @@ import { BasicSvg } from './BasicSvg';
  * @param {string} props.strokeWidth Stroke width.
  * @param {string} props.viewBox Viewbox values.
  *
- * @returns {React.Component} Icon component.
+ * @returns {JSX.Element} Rendered icon component.
  */
 export const FallbackIcon = ({ width, height, fill, stroke, strokeWidth }) => {
   return (
