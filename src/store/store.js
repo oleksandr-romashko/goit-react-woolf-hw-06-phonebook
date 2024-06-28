@@ -1,16 +1,9 @@
-
 import { configureStore } from '@reduxjs/toolkit';
-import contactsReducer from './contacts/reducer';
-import filterReducer from './filter/reducer';
+import reducer from './reducer';
 
 /**
  * A store that holds the whole state tree of the application.
  */
-const store = configureStore({
-  reducer: {
-    contacts: contactsReducer,
-    filter: filterReducer,
-  },
-});
+const store = configureStore({reducer});
 
 export default store;
