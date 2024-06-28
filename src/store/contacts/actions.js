@@ -1,31 +1,27 @@
-import CONTACTS from "./constants";
+import { createAction } from "@reduxjs/toolkit";
 
 /**
  * Action to add contact to the contacts list.
- * Sets contact 'id' value as the number of milliseconds elapsed since the epoch.
- * @param {string} name Contact name. 
- * @param {string} number Contact phone number.
- * @returns {object} Contacts action object.
+ * @returns {func} Contacts action function.
  */
-export const addContactAction = (name, number) => {
-  return {
-    type: CONTACTS.TYPES.ADD_CONTACT,
-    payload: {
-      id: Date.now(),
-      name,
-      number,
-    }
-  };
-};
+export const addContactAction = createAction(
+  'contacts/addContact', 
+  (name, number) => {
+    return {
+      payload: {
+        id: Date.now(),
+        name,
+        number,
+      },
+    };
+  }
+);
 
 /**
  * Action to delete contact from the contacts list.
- * @param {number} contactId Contact id. 
- * @returns {object} Contacts action object.
+ * @returns {func} Contacts action function.
  */
-export const deleteContactByIdAction = contactId => {
-  return {
-    type: CONTACTS.TYPES.DELETE_CONTACT_BY_ID,
-    payload: contactId,
-  };
-};
+export const deleteContactByIdAction = createAction(
+  'contacts/deleteContactById',
+);
+

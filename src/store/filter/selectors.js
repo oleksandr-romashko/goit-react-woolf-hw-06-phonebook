@@ -3,4 +3,4 @@
  * @param {object} state Global app state. 
  * @returns {string} Filter value.
  */
-export const getFilter = state => state.filter.filter;
+export const getFilter = state => state.filter;

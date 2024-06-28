@@ -1,18 +1,25 @@
-import FILTER from "./constants";
+import { createReducer } from "@reduxjs/toolkit";
+import { setFilterAction } from "./actions";
+
+const INITIAL_STATE = '';
 
 /**
  * Filter reducer.
- * @param {object} state Global app state.
- * @param {object} action Filter action
+ * @param {object} initialState Initial state.
+ * @param {object} actionsMap Properties object.
  * @returns {object} Updated app state based on applied action or the same state. 
  */
-const filterReducer = (state = {filter: FILTER.INITIAL_STATE}, action) => {
-  switch (action.type) {
-    case FILTER.TYPES.SET_FILTER:
-      return {...state, filter: action.payload};
-    default:
-      return state;
-  }
-};
+const filterReducer = createReducer(
+  INITIAL_STATE, 
+  (builder) => {
+    builder
+      .addCase(
+        setFilterAction,
+        (_, action) => {
+          return action.payload;
+        }
+      )
+  },
+);
 
 export default filterReducer;

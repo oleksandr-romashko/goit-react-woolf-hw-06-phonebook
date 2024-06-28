@@ -1,13 +1,7 @@
-import FILTER from "./constants";
+import { createAction } from "@reduxjs/toolkit";
 
 /**
  * Action to set filter value.
- * @param {string} value Value of the filter.
- * @returns {object} Filter action object.
+ * @returns {func} Filter action function.
  */
-export const setFilterAction = value => {
-  return {
-    type: FILTER.TYPES.SET_FILTER,
-    payload: value,
-  };
-};
+export const setFilterAction = createAction('filter/setFilter');

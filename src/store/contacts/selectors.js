@@ -3,4 +3,4 @@
  * @param {object} state Global app state. 
  * @returns {object[]} The list of contacts.
  */
-export const getContacts = state => state.contacts.contacts;
+export const getContacts = state => state.contacts;

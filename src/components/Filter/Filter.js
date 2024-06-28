@@ -33,7 +33,7 @@ const Filter = () => {
   const handleFilterClear = () => {
     dispatch(setFilterAction(''));
   };
-
+  
   return (
     <FilterWrapper>
       Find contacts by name
