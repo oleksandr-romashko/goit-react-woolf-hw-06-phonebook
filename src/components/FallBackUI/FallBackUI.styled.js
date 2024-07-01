@@ -21,14 +21,15 @@ export const FallbackWrapper = styled('div')({
   },
 
   '& a': {
-    color: 'hotpink',
+    color: 'var(--color-accent-blue-dark)',
   },
 
   '& a:visited': {
-    color: 'blue',
+    color: 'var(--color-accent-blue-dark)',
   },
 
   '& a:hover, a:focus': {
+    outlineOffset: '4px',
     textDecoration: 'underline',
   },
 });
@@ -55,7 +56,7 @@ export const Cause = styled('details')({
     padding: '24px',
     borderRadius: '5px',
     fontSize: '14px',
-    color: 'white',
+    color: 'var(--color-pure-white)',
     background: '#30353b',
     boxShadow: '1px 1px 2px #bbbbbb',
   },

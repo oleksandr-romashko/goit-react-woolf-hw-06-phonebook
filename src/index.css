@@ -1,5 +1,14 @@
 @import-normalize; /* bring in normalize.css styles */
 
+:root {
+  --color-basic-white: #fcfcfc;
+  --color-basic-black: #050505; 
+  --color-basic-grey: #d0d0d0;
+  --color-pure-white: #fff;
+  --color-accent-blue-light: rgba(124, 168, 225, 0.8);
+  --color-accent-blue-dark: #2764bb;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -9,6 +18,8 @@ body {
   font-variation-settings: 'slnt' 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-basic-black);
+  background-color: #FCFCFC;
 }
 
 code {

@@ -9,7 +9,6 @@ const Page = styled('div')({
   flexDirection: 'column',
   fontSize: '32px',
   lineHeight: '1.15',
-  color: '#000000',
   '&:last-child': {
     marginBottom: '40px',
   },

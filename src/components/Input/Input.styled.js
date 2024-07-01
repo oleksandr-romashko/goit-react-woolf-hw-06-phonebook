@@ -15,8 +15,8 @@ const Input = styled('input')({
   fontWeight: 400,
   lineHeight: '24px',
 
-  border: '1px solid #D0D0D0',
-  backgroundColor: '#FFF',
+  border: '1px solid var(--color-basic-grey)',
+  backgroundColor: 'var(--color-pure-white)',
 
   '&:focus': {
     outline: '1px solid rgba(124, 168, 225, 0.8)',

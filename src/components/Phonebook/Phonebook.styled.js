@@ -11,7 +11,7 @@ export const Wrapper = styled('main')({
   flexDirection: 'column',
   rowGap: '48px',
 
-  color: '#000',
+  color: 'var(--color-basic-black)',
   fontStyle: 'normal',
 });
 

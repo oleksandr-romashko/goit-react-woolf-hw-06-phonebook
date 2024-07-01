@@ -15,9 +15,9 @@ const Header = styled('header')({
   alignItems: 'flex-end',
   fontSize: '64px',
   fontWeight: '600',
-  color: '#ffffff',
+  color: 'var(--color-basic-white)',
   textAlign: 'center',
-  backgroundColor: '#000000',
+  backgroundColor: 'var(--color-basic-black)',
 });
 
 export default Header;

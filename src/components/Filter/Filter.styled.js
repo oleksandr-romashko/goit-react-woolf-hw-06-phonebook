@@ -15,10 +15,8 @@ export const InputWrapper = styled('div')({
 
 export const FilterInput = styled(Input)({
   paddingRight: '40px',
+  backgroundColor: 'var(--color-pure-white)',
   '&::placeholder': {
-    color: 'transparent',
-  },
-  '&:placeholder-shown + button': {
     color: 'transparent',
   },
 });
@@ -37,13 +35,17 @@ export const ClearButton = styled('button')({
   alignItems: 'center',
   fontSize: '24px',
   lineHeight: 0,
-  color: 'rgb(208, 208, 208)',
+  color: 'var(--color-basic-grey)',
   border: 'none',
   borderRadius: '4px',
   backgroundColor: 'transparent',
   transition: 'color 200ms ease-in-out, transform 120ms ease-in-out',
   '&:hover, &:focus': {
     transform: 'translateY(-50%) scale(1.1)',
-    color: '#000',
-  }
+    color: 'var(--color-basic-black)',
+  },
+  ':placeholder-shown + &': {
+    display: 'none',
+    color: 'transparent',
+  },
 });

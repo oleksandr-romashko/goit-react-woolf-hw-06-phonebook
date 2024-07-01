@@ -15,7 +15,7 @@ const App = () => {
       <Header>
         <p>Contact Book</p>
         <HeaderIcons>
-          <LocalStorageIcon />
+          <LocalStorageIcon fill='var(--color-basic-white)' />
         </HeaderIcons>
       </Header>
       <ErrorBoundary>

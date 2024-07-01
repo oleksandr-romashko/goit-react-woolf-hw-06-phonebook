@@ -40,6 +40,9 @@ export const Item = styled('li')({
       fontSize: '32px',
     },
     '& > a': {
+      color: 'var(--color-accent-blue-dark)',
+      outlineOffset: '4px',
+      border: '1px solid transparent',
       whiteSpace: 'nowrap',
       '&:hover, &:focus': {
         textDecoration: 'underline',
