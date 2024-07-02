@@ -25,4 +25,4 @@ export const {
   deleteContactByIdAction,
 } = contactsSlice.actions;
 
-export const contactsReducer = contactsSlice.reducer;
+export default contactsSlice.reducer;
