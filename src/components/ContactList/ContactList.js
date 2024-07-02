@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../store/contacts/selectors';
 import { getFilter } from 'store/filter/selectors';
+import { deleteContactByIdAction } from 'store/contacts/slice';
 
-import storageApi from 'storage/api';
 import textToNormalizedWordsArray from 'components/helpers/textToNormalizedWordsArray';
 
 import Button from 'components/Button/Button.styled';
 import { List, Item } from './ContactList.styled';
-import { deleteContactByIdAction } from 'store/contacts/actions';
 
 /**
  * Component to contain the list of contact items.
@@ -15,12 +14,9 @@ import { deleteContactByIdAction } from 'store/contacts/actions';
  * @returns {JSX.Element} Rendered list of contacts or default message.
  */
 const ContactList = () => {
-  const filter = useSelector(getFilter);
+  const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
-
-  if (storageApi.getContactsFromStorage().length !== contacts.length) {
-    storageApi.writeContactsToStorage(contacts);
-  }
+  const filter = useSelector(getFilter);
 
   /**
    * Filters contacts based on filter value.
@@ -43,8 +39,6 @@ const ContactList = () => {
     });
   }
 
-  const dispatch = useDispatch();
-
   /**
    * Handles deletion of the contact.
    */
@@ -53,14 +47,14 @@ const ContactList = () => {
     dispatch(deleteContactByIdAction(id));
   };
 
-  // no contacts
+  // no contacts message
   if (!contacts.length) {
     return 'You have no contacts at the moment.';
   }
 
   const filteredContacts = filterContacts(contacts);
 
-  // no results after contacts filtration
+  // no results after contacts filtration message
   if (!filteredContacts.length) {
     return "It looks like we couldn't find any matches for your search.";
   }

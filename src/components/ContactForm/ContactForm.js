@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'store/contacts/selectors';
-import { addContactAction } from 'store/contacts/actions';
+import { addContactAction } from 'store/contacts/slice';
+import { setFilterAction } from 'store/filter/slice';
 
 import Input from 'components/Input/Input.styled';
 import Button from 'components/Button/Button.styled';
 import { Form, Label } from './ContactForm.styled';
-import { setFilterAction } from 'store/filter/actions';
 
 /**
  * Patterns to check input text for.
@@ -37,7 +37,7 @@ const ContactForm = () => {
     const name = event.target.name.value;
     const number = event.target.number.value;
     
-    // Additional patterns checks in JS
+    // Additional patterns checks in JS as addition to html input element pattern
     // ! Evaluate logging data when if saving to a log file for potential debugging
     if (!name.match(CONTACT_NAME_PATTERN_REGEX)) {
       console.error(`Name '${name}' does not match allowed pattern.`);
@@ -47,7 +47,6 @@ const ContactForm = () => {
       console.error(`Number '${number}' does not match allowed pattern.`);
       return;
     }
-
     const isExists = contacts.some(({ name: existingName }) =>
       existingName.toLowerCase() === name.toLowerCase());
     if (isExists) {
@@ -55,9 +54,9 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContactAction(name, number));
+    dispatch(addContactAction({name, number}));
 
-    // Clear filter to see a newly added contact (or in case of contacts update)
+    // On addContact - clear filter to see a newly added contact to the list
     dispatch(setFilterAction(''));
 
     event.target.reset();

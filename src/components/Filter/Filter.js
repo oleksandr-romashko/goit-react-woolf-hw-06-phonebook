@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import throttle from 'lodash.throttle';
 
 import { getFilter } from '../../store/filter/selectors';
-import { setFilterAction } from 'store/filter/actions';
+import { setFilterAction } from 'store/filter/slice';
 
 import { 
   FilterWrapper, 
