@@ -31,6 +31,7 @@ This solution follows provided requirements. You may read more about them [here]
 - React
 - React Redux
 - Redux Toolkit
+- Redux Persist
 - Styled Components
 
 ## Getting Started
